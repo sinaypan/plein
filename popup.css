@@ -1,0 +1,171 @@
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --field: #f2f2f7;
+  --text: #1c1c1e;
+  --muted: #8e8e93;
+  --accent: #248a3d;
+  --accent-text: #ffffff;
+  --error: #c0271d;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1c1c1e;
+    --field: #2c2c2e;
+    --text: #f2f2f7;
+    --accent: #30d158;
+    --accent-text: #1c1c1e;
+    --error: #ff6961;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body {
+  width: 300px;
+  margin: 0;
+  padding: 12px;
+  background: var(--bg);
+  color: var(--text);
+  font: 13px/1.4 system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+#settings {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* La grille d'Alt+Q, ouverte dans la bulle sur les pages de Chrome. */
+body.grid {
+  width: 660px;
+  padding: 0;
+}
+
+#gridView .grid-tiles {
+  max-height: 470px;
+}
+
+header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 0 2px 2px;
+}
+
+.title {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.card {
+  margin: 0;
+  padding: 0;
+  border-radius: 12px;
+  background: var(--field);
+  list-style: none;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 10px 8px 12px;
+  cursor: pointer;
+}
+
+.help li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  color: var(--muted);
+}
+
+.help li + li {
+  box-shadow: 0 -1px 0 color-mix(in srgb, var(--muted) 22%, transparent);
+}
+
+.help b {
+  color: var(--text);
+  font-weight: 600;
+}
+
+svg {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.error {
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--error) 14%, var(--field));
+  color: var(--error);
+  user-select: text;
+}
+
+.note {
+  margin: 0;
+  padding: 0 4px;
+  font-size: 12px;
+  user-select: text;
+}
+
+/* L'interrupteur : une case à cocher redessinée. */
+.switch {
+  position: relative;
+  flex: none;
+  width: 40px;
+  height: 24px;
+  margin: 0;
+  appearance: none;
+  border-radius: 999px;
+  outline: 0;
+  background: color-mix(in srgb, var(--muted) 45%, var(--field));
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.switch::after {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  content: '';
+  transition: transform 0.15s;
+}
+
+.switch:checked {
+  background: var(--accent);
+}
+
+.switch:checked::after {
+  transform: translateX(16px);
+}
+
+.switch:focus-visible {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 40%, transparent);
+}
