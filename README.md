@@ -27,7 +27,7 @@ The extension is not on the Chrome Web Store, so it is loaded by hand:
 1. Download this repository (**Code**, then **Download ZIP**) and unzip it, or clone it.
 2. Open `chrome://extensions` and turn on **Developer mode**.
 3. Click **Load unpacked** and choose the folder.
-4. Check the shortcut at `chrome://extensions/shortcuts`: **Voir tous les onglets** should read `Alt+Q`. If Chrome left it empty, click the pencil and press `Alt+Q`.
+4. Check the shortcut at `chrome://extensions/shortcuts`: **See all tabs** should read `Alt+Q`. If Chrome left it empty, click the pencil and press `Alt+Q`.
 
 ## How it works, and what that means
 
