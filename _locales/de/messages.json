@@ -1,0 +1,112 @@
+{
+  "extName": {
+    "message": "Plein"
+  },
+  "extDesc": {
+    "message": "Chrome immer im Vollbild: Maus ganz oben zeigt deine Tabs, ganz unten die Windows-Taskleiste."
+  },
+  "cmdGrid": {
+    "message": "Alle Tabs anzeigen"
+  },
+  "autoFullscreen": {
+    "message": "Automatisches Vollbild"
+  },
+  "bottomBar": {
+    "message": "Windows-Taskleiste unten"
+  },
+  "helpTop": {
+    "message": "Maus ganz oben: deine Tabs"
+  },
+  "helpBottom": {
+    "message": "Maus ganz unten: die Windows-Taskleiste"
+  },
+  "helpF11Off": {
+    "message": " schaltet Plein aus, "
+  },
+  "helpF11On": {
+    "message": " wieder ein"
+  },
+  "gridHelpSuffix": {
+    "message": ": alle deine Tabs"
+  },
+  "gridNoShortcut": {
+    "message": "Das Tab-Raster hat kein Tastenkürzel: wähle eins unter "
+  },
+  "statusOff": {
+    "message": "Aus"
+  },
+  "statusOn": {
+    "message": "An"
+  },
+  "statusChromePage": {
+    "message": "Chrome-Seite: normales Fenster"
+  },
+  "trouble": {
+    "message": "Problem: $TEXT$",
+    "placeholders": {
+      "text": {
+        "content": "$1"
+      }
+    }
+  },
+  "diagnosticNote": {
+    "message": "Diagnose: $TEXT$",
+    "placeholders": {
+      "text": {
+        "content": "$1"
+      }
+    }
+  },
+  "windowRefused": {
+    "message": "Das Fenster wollte nicht in den Modus $MODE$ wechseln.",
+    "placeholders": {
+      "mode": {
+        "content": "$1"
+      }
+    }
+  },
+  "modeFullscreen": {
+    "message": "Vollbild"
+  },
+  "modeNormal": {
+    "message": "normal"
+  },
+  "causeMouse": {
+    "message": "Maus zurück in der Seite"
+  },
+  "causeFocus": {
+    "message": "zurück in Chrome"
+  },
+  "bottomClosed": {
+    "message": "Windows-Taskleiste nach $MS$ ms geschlossen ($CAUSE$)",
+    "placeholders": {
+      "ms": {
+        "content": "$1"
+      },
+      "cause": {
+        "content": "$2"
+      }
+    }
+  },
+  "newTab": {
+    "message": "Neuer Tab"
+  },
+  "closeTab": {
+    "message": "Tab schließen"
+  },
+  "hintNext": {
+    "message": "weiter"
+  },
+  "hintOpen": {
+    "message": "öffnen"
+  },
+  "hintClose": {
+    "message": "schließen"
+  },
+  "keyEnter": {
+    "message": "Enter"
+  },
+  "keyEsc": {
+    "message": "Esc"
+  }
+}

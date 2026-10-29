@@ -1,0 +1,112 @@
+{
+  "extName": {
+    "message": "Plein"
+  },
+  "extDesc": {
+    "message": "Chrome her zaman tam ekran: fare en üstte sekmelerinizi, en altta Windows görev çubuğunu gösterir."
+  },
+  "cmdGrid": {
+    "message": "Tüm sekmeleri gör"
+  },
+  "autoFullscreen": {
+    "message": "Otomatik tam ekran"
+  },
+  "bottomBar": {
+    "message": "Altta Windows görev çubuğu"
+  },
+  "helpTop": {
+    "message": "Fare en üstte: sekmeleriniz"
+  },
+  "helpBottom": {
+    "message": "Fare en altta: Windows görev çubuğu"
+  },
+  "helpF11Off": {
+    "message": " Plein’i kapatır, "
+  },
+  "helpF11On": {
+    "message": " yeniden açar"
+  },
+  "gridHelpSuffix": {
+    "message": ": tüm sekmeleriniz"
+  },
+  "gridNoShortcut": {
+    "message": "Sekme ızgarasının kısayolu yok, buradan seçin: "
+  },
+  "statusOff": {
+    "message": "Kapalı"
+  },
+  "statusOn": {
+    "message": "Açık"
+  },
+  "statusChromePage": {
+    "message": "Chrome sayfası: normal pencere"
+  },
+  "trouble": {
+    "message": "Sorun: $TEXT$",
+    "placeholders": {
+      "text": {
+        "content": "$1"
+      }
+    }
+  },
+  "diagnosticNote": {
+    "message": "Tanılama: $TEXT$",
+    "placeholders": {
+      "text": {
+        "content": "$1"
+      }
+    }
+  },
+  "windowRefused": {
+    "message": "Pencere $MODE$ moduna geçmedi.",
+    "placeholders": {
+      "mode": {
+        "content": "$1"
+      }
+    }
+  },
+  "modeFullscreen": {
+    "message": "tam ekran"
+  },
+  "modeNormal": {
+    "message": "normal"
+  },
+  "causeMouse": {
+    "message": "fare sayfaya geri döndü"
+  },
+  "causeFocus": {
+    "message": "Chrome’a geri dönüldü"
+  },
+  "bottomClosed": {
+    "message": "Windows görev çubuğu $MS$ ms sonra kapandı ($CAUSE$)",
+    "placeholders": {
+      "ms": {
+        "content": "$1"
+      },
+      "cause": {
+        "content": "$2"
+      }
+    }
+  },
+  "newTab": {
+    "message": "Yeni sekme"
+  },
+  "closeTab": {
+    "message": "Sekmeyi kapat"
+  },
+  "hintNext": {
+    "message": "sonraki"
+  },
+  "hintOpen": {
+    "message": "aç"
+  },
+  "hintClose": {
+    "message": "kapat"
+  },
+  "keyEnter": {
+    "message": "Enter"
+  },
+  "keyEsc": {
+    "message": "Esc"
+  }
+}

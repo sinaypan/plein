@@ -1,0 +1,112 @@
+{
+  "extName": {
+    "message": "Plein"
+  },
+  "extDesc": {
+    "message": "Chrome всегда во весь экран: мышь вверху показывает вкладки, внизу — панель задач Windows."
+  },
+  "cmdGrid": {
+    "message": "Показать все вкладки"
+  },
+  "autoFullscreen": {
+    "message": "Автоматический полноэкранный режим"
+  },
+  "bottomBar": {
+    "message": "Панель задач Windows внизу"
+  },
+  "helpTop": {
+    "message": "Мышь в самом верху: ваши вкладки"
+  },
+  "helpBottom": {
+    "message": "Мышь в самом низу: панель задач Windows"
+  },
+  "helpF11Off": {
+    "message": " выключает Plein, "
+  },
+  "helpF11On": {
+    "message": " включает снова"
+  },
+  "gridHelpSuffix": {
+    "message": ": все ваши вкладки"
+  },
+  "gridNoShortcut": {
+    "message": "У сетки вкладок нет сочетания клавиш: выберите его в "
+  },
+  "statusOff": {
+    "message": "Выключено"
+  },
+  "statusOn": {
+    "message": "Включено"
+  },
+  "statusChromePage": {
+    "message": "Страница Chrome: обычное окно"
+  },
+  "trouble": {
+    "message": "Проблема: $TEXT$",
+    "placeholders": {
+      "text": {
+        "content": "$1"
+      }
+    }
+  },
+  "diagnosticNote": {
+    "message": "Диагностика: $TEXT$",
+    "placeholders": {
+      "text": {
+        "content": "$1"
+      }
+    }
+  },
+  "windowRefused": {
+    "message": "Окно не перешло в режим «$MODE$».",
+    "placeholders": {
+      "mode": {
+        "content": "$1"
+      }
+    }
+  },
+  "modeFullscreen": {
+    "message": "во весь экран"
+  },
+  "modeNormal": {
+    "message": "обычный"
+  },
+  "causeMouse": {
+    "message": "мышь вернулась на страницу"
+  },
+  "causeFocus": {
+    "message": "снова в Chrome"
+  },
+  "bottomClosed": {
+    "message": "Панель задач Windows закрыта через $MS$ мс ($CAUSE$)",
+    "placeholders": {
+      "ms": {
+        "content": "$1"
+      },
+      "cause": {
+        "content": "$2"
+      }
+    }
+  },
+  "newTab": {
+    "message": "Новая вкладка"
+  },
+  "closeTab": {
+    "message": "Закрыть вкладку"
+  },
+  "hintNext": {
+    "message": "следующая"
+  },
+  "hintOpen": {
+    "message": "открыть"
+  },
+  "hintClose": {
+    "message": "закрыть"
+  },
+  "keyEnter": {
+    "message": "Enter"
+  },
+  "keyEsc": {
+    "message": "Esc"
+  }
+}

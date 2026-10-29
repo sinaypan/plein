@@ -1,0 +1,112 @@
+{
+  "extName": {
+    "message": "Plein"
+  },
+  "extDesc": {
+    "message": "Chrome을 항상 전체 화면으로: 마우스를 맨 위로 올리면 탭이, 맨 아래로 내리면 Windows 작업 표시줄이 나타납니다."
+  },
+  "cmdGrid": {
+    "message": "모든 탭 보기"
+  },
+  "autoFullscreen": {
+    "message": "자동 전체 화면"
+  },
+  "bottomBar": {
+    "message": "아래쪽에 Windows 작업 표시줄"
+  },
+  "helpTop": {
+    "message": "마우스를 맨 위로: 탭"
+  },
+  "helpBottom": {
+    "message": "마우스를 맨 아래로: Windows 작업 표시줄"
+  },
+  "helpF11Off": {
+    "message": " 키로 Plein 끄기, "
+  },
+  "helpF11On": {
+    "message": " 키로 다시 켜기"
+  },
+  "gridHelpSuffix": {
+    "message": ": 모든 탭"
+  },
+  "gridNoShortcut": {
+    "message": "탭 그리드에 단축키가 없습니다. 여기에서 지정하세요: "
+  },
+  "statusOff": {
+    "message": "꺼짐"
+  },
+  "statusOn": {
+    "message": "켜짐"
+  },
+  "statusChromePage": {
+    "message": "Chrome 페이지: 일반 창"
+  },
+  "trouble": {
+    "message": "문제: $TEXT$",
+    "placeholders": {
+      "text": {
+        "content": "$1"
+      }
+    }
+  },
+  "diagnosticNote": {
+    "message": "진단: $TEXT$",
+    "placeholders": {
+      "text": {
+        "content": "$1"
+      }
+    }
+  },
+  "windowRefused": {
+    "message": "창이 $MODE$(으)로 전환되지 않았습니다.",
+    "placeholders": {
+      "mode": {
+        "content": "$1"
+      }
+    }
+  },
+  "modeFullscreen": {
+    "message": "전체 화면"
+  },
+  "modeNormal": {
+    "message": "일반 모드"
+  },
+  "causeMouse": {
+    "message": "마우스가 페이지로 돌아옴"
+  },
+  "causeFocus": {
+    "message": "Chrome으로 돌아옴"
+  },
+  "bottomClosed": {
+    "message": "$MS$ms 후 Windows 작업 표시줄이 닫힘 ($CAUSE$)",
+    "placeholders": {
+      "ms": {
+        "content": "$1"
+      },
+      "cause": {
+        "content": "$2"
+      }
+    }
+  },
+  "newTab": {
+    "message": "새 탭"
+  },
+  "closeTab": {
+    "message": "탭 닫기"
+  },
+  "hintNext": {
+    "message": "다음"
+  },
+  "hintOpen": {
+    "message": "열기"
+  },
+  "hintClose": {
+    "message": "닫기"
+  },
+  "keyEnter": {
+    "message": "Enter"
+  },
+  "keyEsc": {
+    "message": "Esc"
+  }
+}

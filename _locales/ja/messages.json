@@ -1,0 +1,112 @@
+{
+  "extName": {
+    "message": "Plein"
+  },
+  "extDesc": {
+    "message": "Chrome を常に全画面に：マウスを上端に置くとタブ、下端に置くと Windows のタスクバーが表示されます。"
+  },
+  "cmdGrid": {
+    "message": "すべてのタブを表示"
+  },
+  "autoFullscreen": {
+    "message": "自動で全画面"
+  },
+  "bottomBar": {
+    "message": "下端に Windows のタスクバー"
+  },
+  "helpTop": {
+    "message": "マウスを上端へ：タブ"
+  },
+  "helpBottom": {
+    "message": "マウスを下端へ：Windows のタスクバー"
+  },
+  "helpF11Off": {
+    "message": " で Plein をオフ、"
+  },
+  "helpF11On": {
+    "message": " で再びオン"
+  },
+  "gridHelpSuffix": {
+    "message": "：すべてのタブ"
+  },
+  "gridNoShortcut": {
+    "message": "タブ一覧にショートカットがありません。次の場所で設定してください："
+  },
+  "statusOff": {
+    "message": "オフ"
+  },
+  "statusOn": {
+    "message": "オン"
+  },
+  "statusChromePage": {
+    "message": "Chrome のページ：通常のウィンドウ"
+  },
+  "trouble": {
+    "message": "問題：$TEXT$",
+    "placeholders": {
+      "text": {
+        "content": "$1"
+      }
+    }
+  },
+  "diagnosticNote": {
+    "message": "診断：$TEXT$",
+    "placeholders": {
+      "text": {
+        "content": "$1"
+      }
+    }
+  },
+  "windowRefused": {
+    "message": "ウィンドウが$MODE$に切り替わりませんでした。",
+    "placeholders": {
+      "mode": {
+        "content": "$1"
+      }
+    }
+  },
+  "modeFullscreen": {
+    "message": "全画面"
+  },
+  "modeNormal": {
+    "message": "通常モード"
+  },
+  "causeMouse": {
+    "message": "マウスがページに戻った"
+  },
+  "causeFocus": {
+    "message": "Chrome に戻った"
+  },
+  "bottomClosed": {
+    "message": "Windows のタスクバーを $MS$ ミリ秒後に閉じました（$CAUSE$）",
+    "placeholders": {
+      "ms": {
+        "content": "$1"
+      },
+      "cause": {
+        "content": "$2"
+      }
+    }
+  },
+  "newTab": {
+    "message": "新しいタブ"
+  },
+  "closeTab": {
+    "message": "タブを閉じる"
+  },
+  "hintNext": {
+    "message": "次へ"
+  },
+  "hintOpen": {
+    "message": "開く"
+  },
+  "hintClose": {
+    "message": "閉じる"
+  },
+  "keyEnter": {
+    "message": "Enter"
+  },
+  "keyEsc": {
+    "message": "Esc"
+  }
+}

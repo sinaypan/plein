@@ -1,0 +1,112 @@
+{
+  "extName": {
+    "message": "Plein"
+  },
+  "extDesc": {
+    "message": "Chrome بملء الشاشة دائمًا: الفأرة في الأعلى تعرض علامات التبويب، وفي الأسفل شريط مهام Windows."
+  },
+  "cmdGrid": {
+    "message": "عرض كل علامات التبويب"
+  },
+  "autoFullscreen": {
+    "message": "ملء الشاشة تلقائيًا"
+  },
+  "bottomBar": {
+    "message": "شريط مهام Windows في الأسفل"
+  },
+  "helpTop": {
+    "message": "الفأرة في أعلى الشاشة تمامًا: علامات التبويب"
+  },
+  "helpBottom": {
+    "message": "الفأرة في أسفل الشاشة تمامًا: شريط مهام Windows"
+  },
+  "helpF11Off": {
+    "message": " يوقف Plein، و"
+  },
+  "helpF11On": {
+    "message": " يعيد تشغيله"
+  },
+  "gridHelpSuffix": {
+    "message": ": كل علامات التبويب"
+  },
+  "gridNoShortcut": {
+    "message": "لا يوجد اختصار لشبكة علامات التبويب: اختر واحدًا في "
+  },
+  "statusOff": {
+    "message": "متوقف"
+  },
+  "statusOn": {
+    "message": "يعمل"
+  },
+  "statusChromePage": {
+    "message": "صفحة Chrome: نافذة عادية"
+  },
+  "trouble": {
+    "message": "مشكلة: $TEXT$",
+    "placeholders": {
+      "text": {
+        "content": "$1"
+      }
+    }
+  },
+  "diagnosticNote": {
+    "message": "تشخيص: $TEXT$",
+    "placeholders": {
+      "text": {
+        "content": "$1"
+      }
+    }
+  },
+  "windowRefused": {
+    "message": "رفضت النافذة الانتقال إلى $MODE$.",
+    "placeholders": {
+      "mode": {
+        "content": "$1"
+      }
+    }
+  },
+  "modeFullscreen": {
+    "message": "ملء الشاشة"
+  },
+  "modeNormal": {
+    "message": "الوضع العادي"
+  },
+  "causeMouse": {
+    "message": "عادت الفأرة إلى الصفحة"
+  },
+  "causeFocus": {
+    "message": "العودة إلى Chrome"
+  },
+  "bottomClosed": {
+    "message": "أُغلق شريط مهام Windows بعد $MS$ مللي ثانية ($CAUSE$)",
+    "placeholders": {
+      "ms": {
+        "content": "$1"
+      },
+      "cause": {
+        "content": "$2"
+      }
+    }
+  },
+  "newTab": {
+    "message": "علامة تبويب جديدة"
+  },
+  "closeTab": {
+    "message": "إغلاق علامة التبويب"
+  },
+  "hintNext": {
+    "message": "التالي"
+  },
+  "hintOpen": {
+    "message": "فتح"
+  },
+  "hintClose": {
+    "message": "إغلاق"
+  },
+  "keyEnter": {
+    "message": "Enter"
+  },
+  "keyEsc": {
+    "message": "Esc"
+  }
+}

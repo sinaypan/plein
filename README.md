@@ -18,7 +18,7 @@ A Chrome extension that keeps websites in full screen, with the edges of the scr
 
 <img src="screenshots/popup-light.png" width="40%" alt="The popup: two switches, for full screen and for the Windows taskbar, and four lines explaining the edges, F11 and Alt+Q"> <img src="screenshots/popup-dark.png" width="40%" alt="The same popup in dark mode">
 
-The interface follows the language of Chrome: English by default, French when Chrome is set to French. The websites in the screenshots are made up for the demonstration.
+The interface follows the language of Chrome: English by default, and also French, Spanish, Brazilian Portuguese, German, Italian, Russian, Turkish, Arabic, Japanese, Korean and Simplified Chinese. The websites in the screenshots are made up for the demonstration.
 
 ## Install
 

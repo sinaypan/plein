@@ -1,0 +1,112 @@
+{
+  "extName": {
+    "message": "Plein"
+  },
+  "extDesc": {
+    "message": "Chrome sempre em tela cheia: o mouse no topo mostra suas guias, embaixo a barra de tarefas do Windows."
+  },
+  "cmdGrid": {
+    "message": "Ver todas as guias"
+  },
+  "autoFullscreen": {
+    "message": "Tela cheia automática"
+  },
+  "bottomBar": {
+    "message": "Barra de tarefas do Windows embaixo"
+  },
+  "helpTop": {
+    "message": "Mouse bem no topo: suas guias"
+  },
+  "helpBottom": {
+    "message": "Mouse bem embaixo: a barra de tarefas do Windows"
+  },
+  "helpF11Off": {
+    "message": " desativa o Plein, "
+  },
+  "helpF11On": {
+    "message": " ativa de novo"
+  },
+  "gridHelpSuffix": {
+    "message": ": todas as suas guias"
+  },
+  "gridNoShortcut": {
+    "message": "A grade de guias não tem atalho: escolha um em "
+  },
+  "statusOff": {
+    "message": "Desativado"
+  },
+  "statusOn": {
+    "message": "Ativado"
+  },
+  "statusChromePage": {
+    "message": "Página do Chrome: janela normal"
+  },
+  "trouble": {
+    "message": "Problema: $TEXT$",
+    "placeholders": {
+      "text": {
+        "content": "$1"
+      }
+    }
+  },
+  "diagnosticNote": {
+    "message": "Diagnóstico: $TEXT$",
+    "placeholders": {
+      "text": {
+        "content": "$1"
+      }
+    }
+  },
+  "windowRefused": {
+    "message": "A janela não quis passar para $MODE$.",
+    "placeholders": {
+      "mode": {
+        "content": "$1"
+      }
+    }
+  },
+  "modeFullscreen": {
+    "message": "tela cheia"
+  },
+  "modeNormal": {
+    "message": "modo normal"
+  },
+  "causeMouse": {
+    "message": "o mouse voltou para a página"
+  },
+  "causeFocus": {
+    "message": "de volta ao Chrome"
+  },
+  "bottomClosed": {
+    "message": "Barra de tarefas do Windows fechada após $MS$ ms ($CAUSE$)",
+    "placeholders": {
+      "ms": {
+        "content": "$1"
+      },
+      "cause": {
+        "content": "$2"
+      }
+    }
+  },
+  "newTab": {
+    "message": "Nova guia"
+  },
+  "closeTab": {
+    "message": "Fechar a guia"
+  },
+  "hintNext": {
+    "message": "próxima"
+  },
+  "hintOpen": {
+    "message": "abrir"
+  },
+  "hintClose": {
+    "message": "fechar"
+  },
+  "keyEnter": {
+    "message": "Enter"
+  },
+  "keyEsc": {
+    "message": "Esc"
+  }
+}

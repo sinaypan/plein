@@ -1,0 +1,112 @@
+{
+  "extName": {
+    "message": "Plein"
+  },
+  "extDesc": {
+    "message": "Chrome sempre a schermo intero: il mouse in alto mostra le schede, in basso la barra delle applicazioni di Windows."
+  },
+  "cmdGrid": {
+    "message": "Vedi tutte le schede"
+  },
+  "autoFullscreen": {
+    "message": "Schermo intero automatico"
+  },
+  "bottomBar": {
+    "message": "Barra delle applicazioni di Windows in basso"
+  },
+  "helpTop": {
+    "message": "Mouse tutto in alto: le tue schede"
+  },
+  "helpBottom": {
+    "message": "Mouse tutto in basso: la barra delle applicazioni di Windows"
+  },
+  "helpF11Off": {
+    "message": " disattiva Plein, "
+  },
+  "helpF11On": {
+    "message": " lo riattiva"
+  },
+  "gridHelpSuffix": {
+    "message": ": tutte le tue schede"
+  },
+  "gridNoShortcut": {
+    "message": "La griglia delle schede non ha una scorciatoia: scegline una in "
+  },
+  "statusOff": {
+    "message": "Disattivato"
+  },
+  "statusOn": {
+    "message": "Attivato"
+  },
+  "statusChromePage": {
+    "message": "Pagina di Chrome: finestra normale"
+  },
+  "trouble": {
+    "message": "Problema: $TEXT$",
+    "placeholders": {
+      "text": {
+        "content": "$1"
+      }
+    }
+  },
+  "diagnosticNote": {
+    "message": "Diagnostica: $TEXT$",
+    "placeholders": {
+      "text": {
+        "content": "$1"
+      }
+    }
+  },
+  "windowRefused": {
+    "message": "La finestra non è passata a $MODE$.",
+    "placeholders": {
+      "mode": {
+        "content": "$1"
+      }
+    }
+  },
+  "modeFullscreen": {
+    "message": "schermo intero"
+  },
+  "modeNormal": {
+    "message": "modalità normale"
+  },
+  "causeMouse": {
+    "message": "il mouse è tornato nella pagina"
+  },
+  "causeFocus": {
+    "message": "di nuovo su Chrome"
+  },
+  "bottomClosed": {
+    "message": "Barra delle applicazioni chiusa dopo $MS$ ms ($CAUSE$)",
+    "placeholders": {
+      "ms": {
+        "content": "$1"
+      },
+      "cause": {
+        "content": "$2"
+      }
+    }
+  },
+  "newTab": {
+    "message": "Nuova scheda"
+  },
+  "closeTab": {
+    "message": "Chiudi la scheda"
+  },
+  "hintNext": {
+    "message": "successiva"
+  },
+  "hintOpen": {
+    "message": "apri"
+  },
+  "hintClose": {
+    "message": "chiudi"
+  },
+  "keyEnter": {
+    "message": "Invio"
+  },
+  "keyEsc": {
+    "message": "Esc"
+  }
+}

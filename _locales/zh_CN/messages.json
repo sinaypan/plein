@@ -1,0 +1,112 @@
+{
+  "extName": {
+    "message": "Plein"
+  },
+  "extDesc": {
+    "message": "Chrome 始终全屏：鼠标移到顶部显示标签页，移到底部显示 Windows 任务栏。"
+  },
+  "cmdGrid": {
+    "message": "查看所有标签页"
+  },
+  "autoFullscreen": {
+    "message": "自动全屏"
+  },
+  "bottomBar": {
+    "message": "底部显示 Windows 任务栏"
+  },
+  "helpTop": {
+    "message": "鼠标移到最顶部：标签页"
+  },
+  "helpBottom": {
+    "message": "鼠标移到最底部：Windows 任务栏"
+  },
+  "helpF11Off": {
+    "message": " 关闭 Plein，"
+  },
+  "helpF11On": {
+    "message": " 重新开启"
+  },
+  "gridHelpSuffix": {
+    "message": "：所有标签页"
+  },
+  "gridNoShortcut": {
+    "message": "标签页网格没有快捷键，请在此设置："
+  },
+  "statusOff": {
+    "message": "已关闭"
+  },
+  "statusOn": {
+    "message": "已开启"
+  },
+  "statusChromePage": {
+    "message": "Chrome 页面：普通窗口"
+  },
+  "trouble": {
+    "message": "问题：$TEXT$",
+    "placeholders": {
+      "text": {
+        "content": "$1"
+      }
+    }
+  },
+  "diagnosticNote": {
+    "message": "诊断：$TEXT$",
+    "placeholders": {
+      "text": {
+        "content": "$1"
+      }
+    }
+  },
+  "windowRefused": {
+    "message": "窗口未能切换到$MODE$。",
+    "placeholders": {
+      "mode": {
+        "content": "$1"
+      }
+    }
+  },
+  "modeFullscreen": {
+    "message": "全屏"
+  },
+  "modeNormal": {
+    "message": "普通模式"
+  },
+  "causeMouse": {
+    "message": "鼠标回到了页面"
+  },
+  "causeFocus": {
+    "message": "回到 Chrome"
+  },
+  "bottomClosed": {
+    "message": "Windows 任务栏在 $MS$ 毫秒后关闭（$CAUSE$）",
+    "placeholders": {
+      "ms": {
+        "content": "$1"
+      },
+      "cause": {
+        "content": "$2"
+      }
+    }
+  },
+  "newTab": {
+    "message": "新标签页"
+  },
+  "closeTab": {
+    "message": "关闭标签页"
+  },
+  "hintNext": {
+    "message": "下一个"
+  },
+  "hintOpen": {
+    "message": "打开"
+  },
+  "hintClose": {
+    "message": "关闭"
+  },
+  "keyEnter": {
+    "message": "Enter"
+  },
+  "keyEsc": {
+    "message": "Esc"
+  }
+}

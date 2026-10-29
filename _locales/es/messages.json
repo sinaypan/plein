@@ -1,0 +1,112 @@
+{
+  "extName": {
+    "message": "Plein"
+  },
+  "extDesc": {
+    "message": "Chrome siempre en pantalla completa: el ratón arriba muestra tus pestañas, abajo la barra de tareas de Windows."
+  },
+  "cmdGrid": {
+    "message": "Ver todas las pestañas"
+  },
+  "autoFullscreen": {
+    "message": "Pantalla completa automática"
+  },
+  "bottomBar": {
+    "message": "Barra de tareas de Windows abajo"
+  },
+  "helpTop": {
+    "message": "Ratón arriba del todo: tus pestañas"
+  },
+  "helpBottom": {
+    "message": "Ratón abajo del todo: la barra de tareas de Windows"
+  },
+  "helpF11Off": {
+    "message": " desactiva Plein, "
+  },
+  "helpF11On": {
+    "message": " lo vuelve a activar"
+  },
+  "gridHelpSuffix": {
+    "message": ": todas tus pestañas"
+  },
+  "gridNoShortcut": {
+    "message": "La cuadrícula de pestañas no tiene atajo: elige uno en "
+  },
+  "statusOff": {
+    "message": "Desactivado"
+  },
+  "statusOn": {
+    "message": "Activado"
+  },
+  "statusChromePage": {
+    "message": "Página de Chrome: ventana normal"
+  },
+  "trouble": {
+    "message": "Problema: $TEXT$",
+    "placeholders": {
+      "text": {
+        "content": "$1"
+      }
+    }
+  },
+  "diagnosticNote": {
+    "message": "Diagnóstico: $TEXT$",
+    "placeholders": {
+      "text": {
+        "content": "$1"
+      }
+    }
+  },
+  "windowRefused": {
+    "message": "La ventana no quiso pasar a $MODE$.",
+    "placeholders": {
+      "mode": {
+        "content": "$1"
+      }
+    }
+  },
+  "modeFullscreen": {
+    "message": "pantalla completa"
+  },
+  "modeNormal": {
+    "message": "modo normal"
+  },
+  "causeMouse": {
+    "message": "el ratón volvió a la página"
+  },
+  "causeFocus": {
+    "message": "de vuelta en Chrome"
+  },
+  "bottomClosed": {
+    "message": "Barra de tareas de Windows cerrada tras $MS$ ms ($CAUSE$)",
+    "placeholders": {
+      "ms": {
+        "content": "$1"
+      },
+      "cause": {
+        "content": "$2"
+      }
+    }
+  },
+  "newTab": {
+    "message": "Nueva pestaña"
+  },
+  "closeTab": {
+    "message": "Cerrar la pestaña"
+  },
+  "hintNext": {
+    "message": "siguiente"
+  },
+  "hintOpen": {
+    "message": "abrir"
+  },
+  "hintClose": {
+    "message": "cerrar"
+  },
+  "keyEnter": {
+    "message": "Intro"
+  },
+  "keyEsc": {
+    "message": "Esc"
+  }
+}
