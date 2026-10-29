@@ -57,6 +57,12 @@ var PleinGrid = (() => {
       text-align: left;
       cursor: pointer;
     }
+    /* Comme Alt+Tab : la souris montre une vignette sans la choisir ; seul un clic
+       ou le clavier change le choix, que lâcher Alt ouvre. */
+    .grid-tile:hover {
+      background: color-mix(in srgb, var(--text) 8%, var(--field));
+      box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--text) 18%, transparent);
+    }
     .grid-tile.selected {
       background: color-mix(in srgb, var(--accent) 22%, var(--field));
       box-shadow: inset 0 0 0 2px var(--accent);
@@ -192,7 +198,7 @@ var PleinGrid = (() => {
 
     const draw = () => {
       tiles.replaceChildren(
-        ...list.map((tab, index) => {
+        ...list.map((tab) => {
           const tile = document.createElement('button');
           tile.type = 'button';
           tile.className = 'grid-tile';
@@ -228,9 +234,6 @@ var PleinGrid = (() => {
             if (event.button !== 1 || tab.pinned) return;
             event.preventDefault();
             actions.close(tab);
-          });
-          tile.addEventListener('mousemove', () => {
-            if (selected !== index) select(index);
           });
           return tile;
         }),
