@@ -1,0 +1,112 @@
+{
+  "extName": {
+    "message": "Plein"
+  },
+  "extDesc": {
+    "message": "Chrome always in full screen: the mouse at the top shows your tabs, at the bottom the Windows taskbar."
+  },
+  "cmdGrid": {
+    "message": "See all tabs"
+  },
+  "autoFullscreen": {
+    "message": "Automatic full screen"
+  },
+  "bottomBar": {
+    "message": "Windows taskbar at the bottom"
+  },
+  "helpTop": {
+    "message": "Mouse at the very top: your tabs"
+  },
+  "helpBottom": {
+    "message": "Mouse at the very bottom: the Windows taskbar"
+  },
+  "helpF11Off": {
+    "message": " turns Plein off, "
+  },
+  "helpF11On": {
+    "message": " turns it back on"
+  },
+  "gridHelpSuffix": {
+    "message": ": all your tabs"
+  },
+  "gridNoShortcut": {
+    "message": "The tab grid has no shortcut: choose one in "
+  },
+  "statusOff": {
+    "message": "Off"
+  },
+  "statusOn": {
+    "message": "On"
+  },
+  "statusChromePage": {
+    "message": "Chrome page: normal window"
+  },
+  "trouble": {
+    "message": "Problem: $TEXT$",
+    "placeholders": {
+      "text": {
+        "content": "$1"
+      }
+    }
+  },
+  "diagnosticNote": {
+    "message": "Diagnostic: $TEXT$",
+    "placeholders": {
+      "text": {
+        "content": "$1"
+      }
+    }
+  },
+  "windowRefused": {
+    "message": "The window would not switch to $MODE$.",
+    "placeholders": {
+      "mode": {
+        "content": "$1"
+      }
+    }
+  },
+  "modeFullscreen": {
+    "message": "full screen"
+  },
+  "modeNormal": {
+    "message": "normal mode"
+  },
+  "causeMouse": {
+    "message": "mouse moved back into the page"
+  },
+  "causeFocus": {
+    "message": "back on Chrome"
+  },
+  "bottomClosed": {
+    "message": "Windows taskbar closed after $MS$ ms ($CAUSE$)",
+    "placeholders": {
+      "ms": {
+        "content": "$1"
+      },
+      "cause": {
+        "content": "$2"
+      }
+    }
+  },
+  "newTab": {
+    "message": "New tab"
+  },
+  "closeTab": {
+    "message": "Close the tab"
+  },
+  "hintNext": {
+    "message": "next"
+  },
+  "hintOpen": {
+    "message": "open"
+  },
+  "hintClose": {
+    "message": "close"
+  },
+  "keyEnter": {
+    "message": "Enter"
+  },
+  "keyEsc": {
+    "message": "Esc"
+  }
+}

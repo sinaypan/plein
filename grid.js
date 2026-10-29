@@ -4,6 +4,9 @@
 // confié à qui l'a construite.
 // eslint-disable-next-line no-var
 var PleinGrid = (() => {
+  // Textes dans la langue de Chrome (_locales) ; ce fichier tourne aussi dans les pages.
+  const t = (key, ...subs) => chrome.i18n.getMessage(key, subs.map(String)) || key;
+
   const CSS = `
     :host, :root {
       --card: #ffffff;
@@ -159,11 +162,11 @@ var PleinGrid = (() => {
   const hint = () => {
     const line = document.createElement('div');
     line.className = 'grid-hint';
-    const parts = [['Alt+Q', ' suivant'], ['Entrée', ' ouvrir'], ['Échap', ' fermer']];
+    const parts = [['Alt+Q', t('hintNext')], [t('keyEnter'), t('hintOpen')], [t('keyEsc'), t('hintClose')]];
     parts.forEach(([key, text], index) => {
       const b = document.createElement('b');
       b.textContent = key;
-      line.append(...(index ? [' · '] : []), b, text);
+      line.append(...(index ? [' · '] : []), b, ' ', text);
     });
     return line;
   };
@@ -210,7 +213,7 @@ var PleinGrid = (() => {
             const close = document.createElement('span');
             close.className = 'grid-close';
             close.setAttribute('role', 'button');
-            close.setAttribute('aria-label', 'Fermer l’onglet');
+            close.setAttribute('aria-label', t('closeTab'));
             close.append(icon('M4.5 4.5l7 7M11.5 4.5l-7 7'));
             close.addEventListener('click', (event) => {
               event.stopPropagation();
@@ -256,5 +259,5 @@ var PleinGrid = (() => {
     };
   };
 
-  return { CSS, build, favicon, picture, icon };
+  return { CSS, build, favicon, picture, icon, t };
 })();

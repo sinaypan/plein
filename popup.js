@@ -17,7 +17,7 @@ const drawStatus = async () => {
   byId('enabled').checked = settings.enabled;
   byId('bottom').checked = settings.bottom;
   byId('helpBottom').hidden = !settings.bottom;
-  byId('status').textContent = !settings.enabled ? 'Désactivé' : web ? 'Actif' : 'Page de Chrome : fenêtre normale';
+  byId('status').textContent = t(!settings.enabled ? 'statusOff' : web ? 'statusOn' : 'statusChromePage');
 };
 
 // Le raccourci réellement attribué : Alt+Q par défaut, modifiable dans Chrome.
@@ -27,21 +27,21 @@ const drawShortcut = async () => {
   const key = document.createElement('b');
   if (command?.shortcut) {
     key.textContent = command.shortcut;
-    help.replaceChildren(key, ' : tous vos onglets');
+    help.replaceChildren(key, t('gridHelpSuffix'));
   } else {
     key.textContent = 'chrome://extensions/shortcuts';
-    help.replaceChildren('Grille d’onglets sans raccourci : à choisir dans ', key);
+    help.replaceChildren(t('gridNoShortcut'), key);
   }
 };
 
 const drawTrouble = (trouble) => {
   byId('trouble').hidden = !trouble;
-  byId('trouble').textContent = trouble ? `Souci : ${trouble}` : '';
+  byId('trouble').textContent = trouble ? t('trouble', trouble) : '';
 };
 
 const drawNote = (note) => {
   byId('note').hidden = !note;
-  byId('note').textContent = note ? `Diagnostic : ${note}` : '';
+  byId('note').textContent = note ? t('diagnosticNote', note) : '';
 };
 
 byId('enabled').addEventListener('change', () => {
@@ -70,7 +70,7 @@ let grid = null;
 
 const hostOf = (tab) => {
   const url = tab.pendingUrl || tab.url || '';
-  if (/^chrome:\/\/newtab\/?$/.test(url)) return 'Nouvel onglet';
+  if (/^chrome:\/\/newtab\/?$/.test(url)) return t('newTab');
   try {
     const parsed = new URL(url);
     return /^https?:$/.test(parsed.protocol) ? parsed.hostname.replace(/^www\./, '') : url.replace(/\/$/, '');
@@ -102,7 +102,7 @@ const showGrid = async () => {
   grid = PleinGrid.build(
     tabs.map((tab) => ({
       id: tab.id,
-      title: tab.title || hostOf(tab) || 'Nouvel onglet',
+      title: tab.title || hostOf(tab) || t('newTab'),
       host: hostOf(tab),
       pinned: tab.pinned,
       current: tab.id === current?.id,

@@ -1,0 +1,112 @@
+{
+  "extName": {
+    "message": "Plein"
+  },
+  "extDesc": {
+    "message": "Chrome toujours en plein écran : la souris en haut montre vos onglets, en bas la barre Windows."
+  },
+  "cmdGrid": {
+    "message": "Voir tous les onglets"
+  },
+  "autoFullscreen": {
+    "message": "Plein écran automatique"
+  },
+  "bottomBar": {
+    "message": "Barre Windows en bas"
+  },
+  "helpTop": {
+    "message": "Souris tout en haut : vos onglets"
+  },
+  "helpBottom": {
+    "message": "Souris tout en bas : la barre Windows"
+  },
+  "helpF11Off": {
+    "message": " désactive Plein, "
+  },
+  "helpF11On": {
+    "message": " le réactive"
+  },
+  "gridHelpSuffix": {
+    "message": " : tous vos onglets"
+  },
+  "gridNoShortcut": {
+    "message": "Grille d’onglets sans raccourci : à choisir dans "
+  },
+  "statusOff": {
+    "message": "Désactivé"
+  },
+  "statusOn": {
+    "message": "Actif"
+  },
+  "statusChromePage": {
+    "message": "Page de Chrome : fenêtre normale"
+  },
+  "trouble": {
+    "message": "Souci : $TEXT$",
+    "placeholders": {
+      "text": {
+        "content": "$1"
+      }
+    }
+  },
+  "diagnosticNote": {
+    "message": "Diagnostic : $TEXT$",
+    "placeholders": {
+      "text": {
+        "content": "$1"
+      }
+    }
+  },
+  "windowRefused": {
+    "message": "La fenêtre n'a pas voulu passer en mode $MODE$.",
+    "placeholders": {
+      "mode": {
+        "content": "$1"
+      }
+    }
+  },
+  "modeFullscreen": {
+    "message": "plein écran"
+  },
+  "modeNormal": {
+    "message": "normal"
+  },
+  "causeMouse": {
+    "message": "souris remontée dans la page"
+  },
+  "causeFocus": {
+    "message": "retour sur Chrome"
+  },
+  "bottomClosed": {
+    "message": "barre Windows refermée après $MS$ ms ($CAUSE$)",
+    "placeholders": {
+      "ms": {
+        "content": "$1"
+      },
+      "cause": {
+        "content": "$2"
+      }
+    }
+  },
+  "newTab": {
+    "message": "Nouvel onglet"
+  },
+  "closeTab": {
+    "message": "Fermer l’onglet"
+  },
+  "hintNext": {
+    "message": "suivant"
+  },
+  "hintOpen": {
+    "message": "ouvrir"
+  },
+  "hintClose": {
+    "message": "fermer"
+  },
+  "keyEnter": {
+    "message": "Entrée"
+  },
+  "keyEsc": {
+    "message": "Échap"
+  }
+}

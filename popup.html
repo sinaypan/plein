@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <title>Plein</title>
@@ -13,31 +13,31 @@
       </header>
 
       <label class="card row">
-        <span>Plein écran automatique</span>
+        <span data-i18n="autoFullscreen"></span>
         <input id="enabled" class="switch" type="checkbox" />
       </label>
 
       <label class="card row">
-        <span>Barre Windows en bas</span>
+        <span data-i18n="bottomBar"></span>
         <input id="bottom" class="switch" type="checkbox" />
       </label>
 
       <ul class="card help">
         <li>
           <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V3M4 7l4-4 4 4" /></svg>
-          <span>Souris tout en haut : vos onglets</span>
+          <span data-i18n="helpTop"></span>
         </li>
         <li id="helpBottom">
           <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M4 9l4 4 4-4" /></svg>
-          <span>Souris tout en bas : la barre Windows</span>
+          <span data-i18n="helpBottom"></span>
         </li>
         <li>
           <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="4" width="12" height="8" rx="2" /></svg>
-          <span><b>F11</b> désactive Plein, <b>F11</b> le réactive</span>
+          <span><b>F11</b><span data-i18n="helpF11Off"></span><b>F11</b><span data-i18n="helpF11On"></span></span>
         </li>
         <li>
           <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2.5" y="2.5" width="4.5" height="4.5" rx="1.2" /><rect x="9" y="2.5" width="4.5" height="4.5" rx="1.2" /><rect x="2.5" y="9" width="4.5" height="4.5" rx="1.2" /><rect x="9" y="9" width="4.5" height="4.5" rx="1.2" /></svg>
-          <span id="helpGrid"><b>Alt+Q</b> : tous vos onglets</span>
+          <span id="helpGrid"><b>Alt+Q</b><span data-i18n="gridHelpSuffix"></span></span>
         </li>
       </ul>
 
@@ -49,6 +49,7 @@
     <!-- Alt+Q sur une page de Chrome, où la grille ne peut pas être dessinée dans la page. -->
     <section id="gridView" hidden></section>
 
+    <script src="i18n.js"></script>
     <script src="grid.js"></script>
     <script src="popup.js"></script>
   </body>

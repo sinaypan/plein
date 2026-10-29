@@ -114,7 +114,7 @@
   let barFading = null; // barre fermée, pendant qu'elle remonte
   let opening = false;
 
-  const { icon, favicon } = PleinGrid;
+  const { icon, favicon, t } = PleinGrid;
 
   const draw = (tabs) => {
     const list = document.createElement('div');
@@ -132,7 +132,7 @@
         const close = document.createElement('span');
         close.className = 'close';
         close.setAttribute('role', 'button');
-        close.setAttribute('aria-label', 'Fermer l’onglet');
+        close.setAttribute('aria-label', t('closeTab'));
         close.append(icon('M4.5 4.5l7 7M11.5 4.5l-7 7'));
         close.addEventListener('click', async (event) => {
           event.stopPropagation();
@@ -163,7 +163,7 @@
     const add = document.createElement('button');
     add.type = 'button';
     add.className = 'add';
-    add.title = 'Nouvel onglet';
+    add.title = t('newTab');
     add.append(icon('M8 3v10M3 8h10'));
     add.addEventListener('click', () => {
       send({ type: 'new' });

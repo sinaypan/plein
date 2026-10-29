@@ -6,6 +6,9 @@
 
 const DEFAULT_SETTINGS = { enabled: true, bottom: true };
 
+// Textes dans la langue de Chrome (_locales).
+const t = (key, ...subs) => chrome.i18n.getMessage(key, subs.map(String)) || key;
+
 // Le Web Store refuse les scripts d'extension, comme les pages de Chrome.
 const STORE = /^https:\/\/(chromewebstore\.google\.com|chrome\.google\.com\/webstore)/;
 
@@ -73,7 +76,7 @@ const settings = async () => ({ ...DEFAULT_SETTINGS, ...(await chrome.storage.lo
 // Un souci est gardé pour la bulle de l'icône, qui l'affiche tel quel.
 const report = (error) => {
   console.error(error);
-  chrome.storage.session.set({ trouble: `${new Date().toLocaleTimeString('fr-FR')} · ${error?.message || error}` });
+  chrome.storage.session.set({ trouble: `${new Date().toLocaleTimeString(chrome.i18n.getUILanguage())} · ${error?.message || error}` });
 };
 
 // Les changements de fenêtre passent l'un après l'autre : deux événements
@@ -102,7 +105,7 @@ const setState = async (windowId, wanted) => {
     if ((await chrome.windows.get(windowId)).state === wanted) return;
     await wait(250);
   }
-  throw new Error(`La fenêtre n'a pas voulu passer en mode ${wanted === 'fullscreen' ? 'plein écran' : 'normal'}.`);
+  throw new Error(t('windowRefused', t(wanted === 'fullscreen' ? 'modeFullscreen' : 'modeNormal')));
 };
 
 const applyNow = async (windowId) => {
@@ -194,12 +197,12 @@ const reveal = (windowId) =>
     return true;
   });
 
-const CAUSES = { mouse: 'souris remontée dans la page', focus: 'retour sur Chrome' };
+const CAUSES = { mouse: 'causeMouse', focus: 'causeFocus' };
 
 // Diagnostic : une barre Windows refermée presque aussitôt est notée pour la bulle de l'icône.
 const note = (shown, cause) => {
   const ms = Date.now() - (shown?.at || 0);
-  if (ms < 1500) chrome.storage.session.set({ bottomNote: `${new Date().toLocaleTimeString('fr-FR')} · barre Windows refermée après ${ms} ms (${CAUSES[cause]})` });
+  if (ms < 1500) chrome.storage.session.set({ bottomNote: `${new Date().toLocaleTimeString(chrome.i18n.getUILanguage())} · ${t('bottomClosed', ms, t(CAUSES[cause]))}` });
 };
 
 const unreveal = (windowId, cause) =>
@@ -255,9 +258,9 @@ const faviconOf = async (url) => {
 const titleOf = (tab) => {
   if (tab.title) return tab.title;
   try {
-    return new URL(tab.pendingUrl || tab.url).hostname || 'Nouvel onglet';
+    return new URL(tab.pendingUrl || tab.url).hostname || t('newTab');
   } catch {
-    return 'Nouvel onglet';
+    return t('newTab');
   }
 };
 
@@ -340,7 +343,7 @@ const captureSoon = (windowId, tabId, delay) => setTimeout(() => capture(windowI
 
 const hostOf = (tab) => {
   const url = tab.pendingUrl || tab.url || '';
-  if (/^chrome:\/\/newtab\/?$/.test(url)) return 'Nouvel onglet';
+  if (/^chrome:\/\/newtab\/?$/.test(url)) return t('newTab');
   try {
     const parsed = new URL(url);
     return /^https?:$/.test(parsed.protocol) ? parsed.hostname.replace(/^www\./, '') : url.replace(/\/$/, '');
