@@ -286,6 +286,44 @@ const ownTab = async (tabId, windowId) => {
   return tab?.windowId === windowId ? tab : null;
 };
 
+// Ce qui est écrit dans l'adresse d'un onglet : une adresse, sinon null (une recherche).
+// Les autres schémas (javascript:, data:) ne passent pas.
+const addressOf = (text) => {
+  const value = text.trim();
+  let address = null;
+  if (/^(https?|file|chrome|about):/i.test(value)) address = value;
+  else if (/^localhost(:\d+)?([/?#]|$)/i.test(value)) address = `http://${value}`;
+  else if (/^([^\s/?#:]+\.\p{L}[\p{L}\d-]+|\d+\.\d+\.\d+\.\d+)(:\d+)?([/?#]\S*)?$/iu.test(value)) address = `https://${value}`;
+  try {
+    return address && new URL(address).href;
+  } catch {
+    return null;
+  }
+};
+
+// Les favoris que la barre sait ouvrir : pas les bookmarklets (javascript:).
+const BOOKMARK_LINK = /^(https?|file|chrome):/i;
+
+// La barre de favoris ; Chrome en a deux quand une partie est gardée dans le compte Google.
+const bookmarksBar = async () => {
+  const [root] = await chrome.bookmarks.getTree();
+  const bars = root.children.filter((node) => node.folderType === 'bookmarks-bar');
+  return (bars.length ? bars : root.children.slice(0, 1)).flatMap((node) => node.children || []);
+};
+
+const bookmarkItems = (nodes) =>
+  Promise.all(
+    nodes
+      .filter((node) => !node.url || BOOKMARK_LINK.test(node.url))
+      .map(async (node) => ({
+        id: node.id,
+        title: node.title,
+        folder: !node.url,
+        host: node.url ? URL.parse(node.url)?.hostname || '' : '',
+        icon: node.url ? await faviconOf(node.url) : null,
+      })),
+  );
+
 /* ---------- Aperçus des onglets ---------- */
 
 // Chrome ne photographie que l'onglet affiché : chaque onglet garde l'image de
@@ -450,6 +488,33 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       return answer(async () => {
         if (await ownTab(message.tabId, windowId)) await whenFree(() => chrome.tabs.remove(message.tabId));
         return tabsOf(windowId);
+      });
+    case 'tab-url':
+      return answer(async () => {
+        const target = await ownTab(message.tabId, windowId);
+        return target ? target.pendingUrl || target.url || '' : null;
+      });
+    case 'go':
+      return answer(async () => {
+        const text = String(message.text ?? '');
+        if (!text.trim() || !(await ownTab(message.tabId, windowId))) return false;
+        const url = addressOf(text);
+        await whenFree(() => chrome.tabs.update(message.tabId, url ? { url, active: true } : { active: true }));
+        if (!url) await chrome.search.query({ text: text.trim(), tabId: message.tabId });
+        return true;
+      });
+    case 'bookmarks':
+      return answer(async () => bookmarkItems(message.id ? await chrome.bookmarks.getChildren(String(message.id)) : await bookmarksBar()));
+    case 'open-bookmark':
+      return answer(async () => {
+        const [node] = await chrome.bookmarks.get(String(message.id)).catch(() => []);
+        if (!node?.url || !BOOKMARK_LINK.test(node.url)) return false;
+        await whenFree(() =>
+          message.newTab
+            ? chrome.tabs.create({ windowId, url: node.url, index: tab.index + 1, active: false })
+            : chrome.tabs.update(tab.id, { url: node.url }),
+        );
+        return true;
       });
     case 'new':
       return answer(async () => {

@@ -94,6 +94,15 @@
   "closeTab": {
     "message": "إغلاق علامة التبويب"
   },
+  "tabAddress": {
+    "message": "عنوان علامة التبويب"
+  },
+  "bookmarksBar": {
+    "message": "الإشارات المرجعية"
+  },
+  "noBookmarks": {
+    "message": "لا توجد إشارات مرجعية هنا"
+  },
   "hintNext": {
     "message": "التالي"
   },

@@ -94,6 +94,15 @@
   "closeTab": {
     "message": "Cerrar la pestaña"
   },
+  "tabAddress": {
+    "message": "Dirección de la pestaña"
+  },
+  "bookmarksBar": {
+    "message": "Marcadores"
+  },
+  "noBookmarks": {
+    "message": "No hay marcadores aquí"
+  },
   "hintNext": {
     "message": "siguiente"
   },

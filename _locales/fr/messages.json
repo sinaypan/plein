@@ -94,6 +94,15 @@
   "closeTab": {
     "message": "Fermer l’onglet"
   },
+  "tabAddress": {
+    "message": "Adresse de l’onglet"
+  },
+  "bookmarksBar": {
+    "message": "Favoris"
+  },
+  "noBookmarks": {
+    "message": "Aucun favori ici"
+  },
   "hintNext": {
     "message": "suivant"
   },

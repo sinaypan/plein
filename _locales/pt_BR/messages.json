@@ -94,6 +94,15 @@
   "closeTab": {
     "message": "Fechar a guia"
   },
+  "tabAddress": {
+    "message": "Endereço da guia"
+  },
+  "bookmarksBar": {
+    "message": "Favoritos"
+  },
+  "noBookmarks": {
+    "message": "Nenhum favorito aqui"
+  },
   "hintNext": {
     "message": "próxima"
   },

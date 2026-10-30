@@ -94,6 +94,15 @@
   "closeTab": {
     "message": "Close the tab"
   },
+  "tabAddress": {
+    "message": "Tab address"
+  },
+  "bookmarksBar": {
+    "message": "Bookmarks"
+  },
+  "noBookmarks": {
+    "message": "No bookmarks here"
+  },
   "hintNext": {
     "message": "next"
   },

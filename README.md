@@ -9,7 +9,7 @@ A Chrome extension that keeps websites in full screen, with the edges of the scr
 ## What it does
 
 - **Websites stay in full screen.** Opening or switching to a website puts the window in full screen by itself, like pressing `F11`. Chrome's own pages (new tab, settings, extensions), error pages and PDFs stay in a normal window, with the real tabs and the address bar, because nothing can be drawn on them.
-- **The top edge shows your tabs.** Touching the top of the screen slides down a bar with the tabs of the window: a click opens one, the cross or a middle click closes it, the **+** opens a new tab.
+- **The top edge shows your tabs.** Touching the top of the screen slides down a bar with the tabs of the window: a click opens one, the cross or a middle click closes it, the **+** opens a new tab. Leave the mouse on a tab for a moment and the bar shows that tab alone, with its name and its address, which you can edit: `Enter` goes there, `Esc` cancels. Moving the mouse out of the bar brings the tabs back. The star opens your bookmarks bar under the tabs, with its folders: a click opens a bookmark, `Ctrl`+click or a middle click opens it in a new tab.
 - **The bottom edge shows the Windows taskbar.** A short pause at the bottom of the screen takes the window out of full screen so the taskbar appears. Moving back up into the page, or coming back to Chrome from another application, puts it in full screen again. A brief blur hides the jump while Windows resizes the window.
 - **`Alt+Q` shows every tab.** Like `Alt+Tab` in Windows: hold `Alt` and press `Q` to move from tab to tab, release `Alt` to open the one selected. A quick `Alt+Q` keeps the grid open, to choose with the arrows, `Enter` or the mouse. Tabs of all windows are there, the most recently seen first, each with a preview of the page as it was last seen.
 - **`F11` is the switch.** Leaving full screen by hand (`F11` or Chrome's menu) turns Plein off and brings back a maximized window, not the slightly smaller one Chrome restores. Entering full screen by hand turns it back on.
@@ -43,12 +43,14 @@ The extension is not on the Chrome Web Store, so it is loaded by hand:
 Everything stays in the browser. Plein has no server and makes no network request.
 
 - The previews are small JPEG images kept in Chrome's session storage: they are deleted with their tab and when Chrome closes, and websites cannot read them.
-- The tab bar and the grid are drawn in a closed shadow root: the page they appear on cannot read the titles of your other tabs or click in them. They receive titles, site names and icons, never addresses.
+- The tab bar and the grid are drawn in a closed shadow root: the page they appear on cannot read the titles of your other tabs or click in them. They receive titles, site names and icons. Your bookmarks are only requested when you press the star. A tab's address is only requested when you hold the mouse on that tab, and is never stored. While you type in it, Plein hides your keys from the page; a site that listens very early could still see them, so avoid typing anything private there.
 
 | Permission | Why it is needed |
 | --- | --- |
 | Access to all sites, and `scripting` | Draw the edges, the bar and the grid on the pages you visit, and take the previews (`captureVisibleTab` requires access to all addresses). This is why Chrome says the extension can read and change data on all sites |
 | `tabs` | List the tabs with their titles, switch to one, close one |
+| `search` | Send what you type in a tab's address to your search engine when it is not an address |
+| `bookmarks` | Show your bookmarks bar when you press the star; Plein never changes your bookmarks |
 | `favicon` | Show each site's icon in the bar and the grid |
 | `storage` | Keep the two switches, and the previews for the session |
 

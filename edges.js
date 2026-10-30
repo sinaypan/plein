@@ -107,6 +107,77 @@
     .add:hover { background: color-mix(in srgb, var(--text) 9%, var(--field)); }
     svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
     .add svg { width: 14px; height: 14px; }
+    .detail {
+      display: flex;
+      flex: 1;
+      gap: 6px;
+      min-width: 0;
+      animation: detail-in 0.12s ease;
+    }
+    @keyframes detail-in { from { opacity: 0; } }
+    .name { flex: 0 1 240px; padding-right: 12px; }
+    .address {
+      flex: 1;
+      min-width: 0;
+      height: 30px;
+      padding: 0 12px;
+      border: 0;
+      border-radius: 999px;
+      outline: 0;
+      background: var(--field);
+      color: inherit;
+      font: inherit;
+      text-overflow: ellipsis;
+    }
+    .address:hover { background: color-mix(in srgb, var(--text) 9%, var(--field)); }
+    .address:focus { background: var(--field); box-shadow: inset 0 0 0 2px var(--accent); }
+    .add.on { background: color-mix(in srgb, var(--accent) 22%, var(--field)); }
+    .favs, .menu {
+      border-radius: 14px;
+      background: var(--card);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22), 0 1px 3px rgba(0, 0, 0, 0.1);
+      color: var(--text);
+      font: 13px/1.3 system-ui, -apple-system, 'Segoe UI', sans-serif;
+      pointer-events: auto;
+      animation: detail-in 0.12s ease;
+    }
+    .favs {
+      display: flex;
+      gap: 4px;
+      max-width: calc(100% - 16px);
+      padding: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .menu {
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      width: 280px;
+      padding: 6px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+    }
+    .fav, .item {
+      display: flex;
+      flex: none;
+      align-items: center;
+      gap: 7px;
+      height: 30px;
+      border: 0;
+      background: var(--field);
+      color: inherit;
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
+    .fav { max-width: 180px; padding: 0 11px 0 9px; border-radius: 999px; }
+    .item { width: 100%; padding: 0 9px; border-radius: 9px; background: transparent; }
+    .fav:hover, .item:hover { background: color-mix(in srgb, var(--text) 9%, var(--field)); }
+    .fav.on { background: color-mix(in srgb, var(--accent) 22%, var(--field)); }
+    .fav svg, .item svg { flex: none; width: 16px; height: 16px; color: var(--muted); }
+    .empty { padding: 6px 10px; color: var(--muted); white-space: nowrap; }
   `;
 
   let host = null;
@@ -116,15 +187,262 @@
 
   const { icon, favicon, t } = PleinGrid;
 
+  const openTab = (tab) => {
+    if (!tab.active) send({ type: 'activate', tabId: tab.id });
+    closeBar();
+  };
+
+  /* ---------- Un onglet en détail ---------- */
+
+  // La souris posée un moment sur un onglet le montre seul, son nom à gauche et son
+  // adresse à modifier à côté. Quitter la barre ramène les onglets, sauf pendant
+  // qu'on écrit : l'écriture finit par Entrée, Échap ou un clic ailleurs.
+  const DETAIL_DWELL_MS = 700;
+  // La page ne doit ni réagir aux touches (raccourcis du site) ni lire ce qu'on écrit.
+  const TYPING_EVENTS = ['keydown', 'keypress', 'keyup', 'beforeinput', 'input', 'compositionstart', 'compositionupdate', 'compositionend', 'paste', 'cut', 'copy'];
+
+  let detailTimer = 0;
+  let backToTabs = null; // présent tant que le détail est affiché
+  let editing = false;
+  let endEdit = null;
+
+  const cancelDwell = () => {
+    clearTimeout(detailTimer);
+    detailTimer = 0;
+  };
+
+  const dwell = (tab) => {
+    cancelDwell();
+    const timer = setTimeout(async () => {
+      const url = await send({ type: 'tab-url', tabId: tab.id });
+      if (detailTimer === timer && url && bar) showDetail(tab, url);
+    }, DETAIL_DWELL_MS);
+    detailTimer = timer;
+  };
+
+  const showTabs = () => {
+    const back = backToTabs;
+    backToTabs = null;
+    back?.();
+  };
+
+  const showDetail = (tab, url) => {
+    cancelDwell();
+    const row = [...bar.children];
+    const scroll = row[0].scrollLeft;
+    // La barre ne fait que grandir : la souris reste dedans, où qu'était l'onglet.
+    bar.style.width = `${Math.max(bar.offsetWidth, Math.min(720, innerWidth - 16))}px`;
+    backToTabs = () => {
+      bar.style.removeProperty('width');
+      bar.replaceChildren(...row);
+      row[0].scrollLeft = scroll;
+    };
+
+    const name = document.createElement('button');
+    name.type = 'button';
+    name.className = `tab name${tab.active ? ' active' : ''}`;
+    const title = document.createElement('span');
+    title.className = 'title';
+    title.textContent = tab.title;
+    name.append(favicon(tab.icon), title);
+    name.addEventListener('click', () => openTab(tab));
+
+    const address = document.createElement('input');
+    address.type = 'text';
+    address.className = 'address';
+    address.value = url;
+    address.dir = 'ltr';
+    address.spellcheck = false;
+    address.autocomplete = 'off';
+    address.setAttribute('aria-label', t('tabAddress'));
+
+    const onTyping = (event) => {
+      event.stopImmediatePropagation();
+      if (event.type !== 'keydown') return;
+      // La touche relâchée après Entrée ou Échap arrive une fois l'écriture finie : elle reste cachée aussi.
+      const hideRelease = () => addEventListener('keyup', (up) => up.stopImmediatePropagation(), { capture: true, once: true });
+      if (event.key === 'Enter' && !event.isComposing) {
+        event.preventDefault();
+        const text = address.value.trim();
+        if (!text) return;
+        hideRelease();
+        send({ type: 'go', tabId: tab.id, text });
+        closeBar();
+      } else if (event.key === 'Escape') {
+        event.preventDefault();
+        hideRelease();
+        address.value = url;
+        address.blur();
+      }
+    };
+    // Le premier clic prend toute l'adresse, comme dans la barre de Chrome ; les suivants placent le curseur.
+    address.addEventListener('mousedown', (event) => {
+      if (editing) return;
+      event.preventDefault();
+      address.focus();
+      address.select();
+    });
+    address.addEventListener('focus', () => {
+      editing = true;
+      for (const type of TYPING_EVENTS) addEventListener(type, onTyping, true);
+      endEdit = () => {
+        endEdit = null;
+        editing = false;
+        for (const type of TYPING_EVENTS) removeEventListener(type, onTyping, true);
+        address.blur();
+      };
+    });
+    address.addEventListener('blur', () => {
+      endEdit?.();
+      if (bar && !bar.matches(':hover')) showTabs();
+    });
+
+    const detail = document.createElement('div');
+    detail.className = 'detail';
+    detail.append(name, address);
+    bar.replaceChildren(detail);
+  };
+
+  /* ---------- Favoris ---------- */
+
+  // Une extension ne peut pas ouvrir la barre de favoris de Chrome : le bouton étoile
+  // en dessine une sous les onglets. Les favoris ne sont demandés qu'à ce moment-là.
+  const FOLDER_ICON = 'M2 4.5a1 1 0 0 1 1-1h3l1.5 1.5H13a1 1 0 0 1 1 1V12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z';
+  const STAR_ICON = 'M8 2.5l1.7 3.5 3.8.5-2.8 2.7.7 3.8L8 10.7l-3.4 1.8.7-3.8-2.8-2.7 3.8-.5z';
+  const BACK_ICON = 'M10 3L5 8l5 5';
+
+  let favs = null;
+  let menu = null;
+  let menuAnchor = null;
+
+  const openBookmark = (item, newTab) => {
+    send({ type: 'open-bookmark', id: item.id, newTab });
+    if (!newTab) closeBar();
+  };
+
+  // Un favori ou un dossier, dans la rangée (fav) comme dans un dossier ouvert (item).
+  const bookmarkButton = (item, className, onFolder) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = className;
+    button.setAttribute('aria-label', item.title || item.host);
+    button.append(item.folder ? icon(FOLDER_ICON) : favicon(item.icon));
+    if (item.title) {
+      const title = document.createElement('span');
+      title.className = 'title';
+      title.textContent = item.title;
+      button.append(title);
+    }
+    if (item.folder) {
+      button.addEventListener('click', () => onFolder(button));
+    } else {
+      button.addEventListener('click', (event) => openBookmark(item, event.ctrlKey));
+      button.addEventListener('auxclick', (event) => {
+        if (event.button !== 1) return;
+        event.preventDefault();
+        openBookmark(item, true);
+      });
+    }
+    return button;
+  };
+
+  const emptyLine = () => {
+    const line = document.createElement('div');
+    line.className = 'empty';
+    line.textContent = t('noBookmarks');
+    return line;
+  };
+
+  const closeMenu = () => {
+    menuAnchor?.classList.remove('on');
+    menu?.remove();
+    menu = menuAnchor = null;
+  };
+
+  // trail : du dossier de la rangée jusqu'au dossier affiché.
+  const showFolder = async (anchor, trail) => {
+    menuAnchor = anchor;
+    anchor.classList.add('on');
+    const items = await send({ type: 'bookmarks', id: trail.at(-1).id });
+    if (!items || menuAnchor !== anchor) return;
+    if (!menu) {
+      const top = favs.getBoundingClientRect().bottom + 6;
+      menu = document.createElement('div');
+      menu.className = 'menu';
+      menu.style.top = `${top}px`;
+      menu.style.left = `${Math.max(8, Math.min(anchor.getBoundingClientRect().left, innerWidth - 288))}px`;
+      menu.style.maxHeight = `${innerHeight - top - 8}px`;
+      bar.getRootNode().append(menu);
+    }
+    const lines = items.map((item) => bookmarkButton(item, 'item', () => showFolder(anchor, [...trail, item])));
+    if (!lines.length) lines.push(emptyLine());
+    if (trail.length > 1) {
+      const back = document.createElement('button');
+      back.type = 'button';
+      back.className = 'item';
+      const title = document.createElement('span');
+      title.className = 'title';
+      title.textContent = trail.at(-1).title;
+      back.append(icon(BACK_ICON), title);
+      back.addEventListener('click', () => showFolder(anchor, trail.slice(0, -1)));
+      lines.unshift(back);
+    }
+    menu.replaceChildren(...lines);
+    menu.scrollTop = 0;
+  };
+
+  const closeFavs = () => {
+    closeMenu();
+    favs?.remove();
+    favs = null;
+  };
+
+  const toggleFavs = async (star) => {
+    if (favs) {
+      closeFavs();
+      star.classList.remove('on');
+      return;
+    }
+    const owner = bar;
+    const items = await send({ type: 'bookmarks' });
+    if (!items || bar !== owner || favs) return;
+    favs = document.createElement('div');
+    favs.className = 'favs';
+    const row = items.map((item) =>
+      bookmarkButton(item, 'fav', (button) => {
+        if (menuAnchor === button) return closeMenu();
+        closeMenu();
+        showFolder(button, [item]);
+      }),
+    );
+    favs.append(...(row.length ? row : [emptyLine()]));
+    scrollsSideways(favs);
+    favs.addEventListener('scroll', closeMenu, { passive: true });
+    bar.after(favs);
+    star.classList.add('on');
+  };
+
+  // La molette fait défiler une rangée qui ne tient pas.
+  const scrollsSideways = (row) => {
+    row.addEventListener('wheel', (event) => {
+      if (row.scrollWidth <= row.clientWidth || !event.deltaY) return;
+      event.preventDefault();
+      row.scrollLeft += event.deltaY;
+    }, { passive: false });
+  };
+
   const draw = (tabs) => {
+    cancelDwell();
     const list = document.createElement('div');
     list.className = 'tabs';
     for (const tab of tabs) {
       const button = document.createElement('button');
       button.type = 'button';
       button.className = `tab${tab.active ? ' active' : ''}${tab.pinned ? ' pinned' : ''}`;
-      button.title = tab.title;
+      button.setAttribute('aria-label', tab.title); // pas de title : la bulle de Chrome passerait devant le détail
       button.append(favicon(tab.icon));
+      button.addEventListener('mouseenter', () => dwell(tab));
+      button.addEventListener('mouseleave', cancelDwell);
       if (!tab.pinned) {
         const title = document.createElement('span');
         title.className = 'title';
@@ -134,6 +452,9 @@
         close.setAttribute('role', 'button');
         close.setAttribute('aria-label', t('closeTab'));
         close.append(icon('M4.5 4.5l7 7M11.5 4.5l-7 7'));
+        // Viser la croix ne doit pas la faire disparaître sous la souris.
+        close.addEventListener('mouseenter', cancelDwell);
+        close.addEventListener('mouseleave', () => dwell(tab));
         close.addEventListener('click', async (event) => {
           event.stopPropagation();
           const rest = await send({ type: 'close', tabId: tab.id });
@@ -142,10 +463,7 @@
         });
         button.append(title, close);
       }
-      button.addEventListener('click', () => {
-        if (!tab.active) send({ type: 'activate', tabId: tab.id });
-        closeBar();
-      });
+      button.addEventListener('click', () => openTab(tab));
       button.addEventListener('auxclick', (event) => {
         if (event.button !== 1 || tab.pinned) return;
         event.preventDefault();
@@ -153,12 +471,7 @@
       });
       list.append(button);
     }
-    // La molette fait défiler la rangée quand les onglets ne tiennent pas.
-    list.addEventListener('wheel', (event) => {
-      if (list.scrollWidth <= list.clientWidth || !event.deltaY) return;
-      event.preventDefault();
-      list.scrollLeft += event.deltaY;
-    }, { passive: false });
+    scrollsSideways(list);
 
     const add = document.createElement('button');
     add.type = 'button';
@@ -170,7 +483,14 @@
       closeBar();
     });
 
-    bar.replaceChildren(list, add);
+    const star = document.createElement('button');
+    star.type = 'button';
+    star.className = `add${favs ? ' on' : ''}`;
+    star.title = t('bookmarksBar');
+    star.append(icon(STAR_ICON));
+    star.addEventListener('click', () => toggleFavs(star));
+
+    bar.replaceChildren(list, add, star);
     list.querySelector('.active')?.scrollIntoView({ block: 'nearest', inline: 'center' });
   };
 
@@ -186,7 +506,9 @@
     const hostStyle = {
       all: 'initial',
       display: 'flex',
-      'justify-content': 'center',
+      'flex-direction': 'column',
+      'align-items': 'center',
+      gap: '6px',
       position: 'fixed',
       top: '8px',
       left: '0',
@@ -203,6 +525,10 @@
     root.adoptedStyleSheets = [sheet];
     bar = document.createElement('div');
     bar.className = 'bar';
+    // Filer vers le bord de l'écran, au-dessus de la barre, ne compte pas comme la quitter.
+    bar.addEventListener('mouseleave', (event) => {
+      if (!editing && event.clientY >= bar.getBoundingClientRect().top) showTabs();
+    });
     root.append(bar);
     draw(tabs);
     document.documentElement.append(host);
@@ -219,6 +545,10 @@
 
   const closeBar = () => {
     if (!host) return;
+    cancelDwell();
+    endEdit?.();
+    backToTabs = null;
+    closeFavs();
     const gone = host;
     bar.classList.remove('open');
     host = bar = null;
@@ -229,7 +559,7 @@
     }, 200);
   };
 
-  const barBottom = () => (bar ? bar.getBoundingClientRect().bottom : 0);
+  const barBottom = () => Math.max(0, ...[bar, favs, menu].filter(Boolean).map((part) => part.getBoundingClientRect().bottom));
 
   /* ---------- Grille d'onglets (Alt+Q) ---------- */
 
@@ -444,11 +774,11 @@
     }
 
     if (y <= EDGE - 1) openBar();
-    else if (host && y > barBottom() + 30) closeBar();
+    else if (host && !editing && y > barBottom() + 30) closeBar();
   };
 
   const onKey = (event) => {
-    if (event.key === 'Escape' && host) closeBar();
+    if (event.key === 'Escape' && host && !editing) closeBar();
   };
 
   const onHide = () => {
@@ -487,6 +817,10 @@
     removeEventListener('keydown', onKey, true);
     removeEventListener('blur', onHide);
     document.removeEventListener('visibilitychange', onHide);
+    cancelDwell();
+    endEdit?.();
+    backToTabs = null;
+    closeFavs();
     closeGrid();
     host?.remove();
     veil?.remove();

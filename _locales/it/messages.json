@@ -94,6 +94,15 @@
   "closeTab": {
     "message": "Chiudi la scheda"
   },
+  "tabAddress": {
+    "message": "Indirizzo della scheda"
+  },
+  "bookmarksBar": {
+    "message": "Preferiti"
+  },
+  "noBookmarks": {
+    "message": "Nessun preferito qui"
+  },
   "hintNext": {
     "message": "successiva"
   },

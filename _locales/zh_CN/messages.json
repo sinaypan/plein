@@ -94,6 +94,15 @@
   "closeTab": {
     "message": "关闭标签页"
   },
+  "tabAddress": {
+    "message": "标签页地址"
+  },
+  "bookmarksBar": {
+    "message": "书签"
+  },
+  "noBookmarks": {
+    "message": "这里没有书签"
+  },
   "hintNext": {
     "message": "下一个"
   },

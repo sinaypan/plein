@@ -94,6 +94,15 @@
   "closeTab": {
     "message": "Sekmeyi kapat"
   },
+  "tabAddress": {
+    "message": "Sekme adresi"
+  },
+  "bookmarksBar": {
+    "message": "Yer işaretleri"
+  },
+  "noBookmarks": {
+    "message": "Burada yer işareti yok"
+  },
   "hintNext": {
     "message": "sonraki"
   },

@@ -94,6 +94,15 @@
   "closeTab": {
     "message": "Tab schließen"
   },
+  "tabAddress": {
+    "message": "Adresse des Tabs"
+  },
+  "bookmarksBar": {
+    "message": "Lesezeichen"
+  },
+  "noBookmarks": {
+    "message": "Hier sind keine Lesezeichen"
+  },
   "hintNext": {
     "message": "weiter"
   },

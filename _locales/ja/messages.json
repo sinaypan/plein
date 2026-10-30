@@ -94,6 +94,15 @@
   "closeTab": {
     "message": "タブを閉じる"
   },
+  "tabAddress": {
+    "message": "タブのアドレス"
+  },
+  "bookmarksBar": {
+    "message": "ブックマーク"
+  },
+  "noBookmarks": {
+    "message": "ここにブックマークはありません"
+  },
   "hintNext": {
     "message": "次へ"
   },

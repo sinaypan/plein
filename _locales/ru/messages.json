@@ -94,6 +94,15 @@
   "closeTab": {
     "message": "Закрыть вкладку"
   },
+  "tabAddress": {
+    "message": "Адрес вкладки"
+  },
+  "bookmarksBar": {
+    "message": "Закладки"
+  },
+  "noBookmarks": {
+    "message": "Здесь нет закладок"
+  },
   "hintNext": {
     "message": "следующая"
   },

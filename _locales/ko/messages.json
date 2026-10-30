@@ -94,6 +94,15 @@
   "closeTab": {
     "message": "탭 닫기"
   },
+  "tabAddress": {
+    "message": "탭 주소"
+  },
+  "bookmarksBar": {
+    "message": "북마크"
+  },
+  "noBookmarks": {
+    "message": "여기에 북마크가 없습니다"
+  },
   "hintNext": {
     "message": "다음"
   },
